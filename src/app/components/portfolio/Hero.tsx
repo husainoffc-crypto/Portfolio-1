@@ -73,8 +73,8 @@ export function Hero() {
       <div className="h-right">
         <div className="h-number-grid">
           <div className="hng">
-            <div className="hng-n">10<sup>+</sup></div>
-            <div className="hng-l">Websites Designed</div>
+            <div className="hng-n">20<sup>+</sup></div>
+            <div className="hng-l">Website Design</div>
           </div>
           <div className="hng">
             <div className="hng-n">2</div>

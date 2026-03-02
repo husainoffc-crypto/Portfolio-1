@@ -23,6 +23,16 @@ const projects = [
     icon: '🎟',
     type: 'Frontend Dev',
   },
+
+
+   {
+    idx: '04',
+    title: 'AU Finja',
+    desc: 'A functional web application built with HTML, CSS, and Bootstrap — front-end development with UX sensibility and clean accessible component architecture.',
+    tags: ['HTML/CSS', 'Bootstrap', 'Web App'],
+    icon: '💍',
+    type: 'UI UX Design',
+  },
 ];
 
 export function Projects() {

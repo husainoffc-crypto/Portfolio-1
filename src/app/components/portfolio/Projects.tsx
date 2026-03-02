@@ -36,7 +36,7 @@ const projects = [
     title: 'DRDA',
     desc: 'A functional web application built with HTML, CSS, and Bootstrap — front-end development with UX sensibility and clean accessible component architecture.',
     tags: ['HTML/CSS', 'Bootstrap', 'Web App', 'UI/UX Design'],
-    icon: '💍',
+    icon: '📱',
     type: 'UI UX Design',
   },
 ];

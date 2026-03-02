@@ -17,7 +17,7 @@ export function Experience() {
         <div className="exp-item rv">
           <div className="exp-l">
             <div>
-              <div className="ex-yr">2022 — 2023</div>
+              <div className="ex-yr">2024 — 2026</div>
               <div className="ex-co">Runtime<br />Solutions</div>
             </div>
             <div className="ex-role">UI/UX Designer</div>

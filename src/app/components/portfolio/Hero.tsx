@@ -77,7 +77,7 @@ export function Hero() {
             <div className="hng-l">Website Design</div>
           </div>
           <div className="hng">
-            <div className="hng-n">2</div>
+            <div className="hng-n">4</div>
             <div className="hng-l">Live Products</div>
           </div>
           <div className="hng">

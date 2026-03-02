@@ -23,9 +23,7 @@ const projects = [
     icon: '🎟',
     type: 'Frontend Dev',
   },
-
-
-   {
+  {
     idx: '04',
     title: 'AU Finja',
     desc: 'A functional web application built with HTML, CSS, and Bootstrap — front-end development with UX sensibility and clean accessible component architecture.',

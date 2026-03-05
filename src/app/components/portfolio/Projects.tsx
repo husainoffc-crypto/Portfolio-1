@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const projects = [
   {
     idx: '01',
@@ -42,36 +44,55 @@ const projects = [
 ];
 
 export function Projects() {
+   const [visibleProjects, setVisibleProjects] = useState(4);
+
+  const loadMore = () => {
+    setVisibleProjects((prev) => Math.min(prev + 2, projects.length));
+  };
   return (
-    <section id="projects">
+   <section id="projects">
       <div className="proj-intro rv">
         <div className="pi-title">
           <div className="pit-a">SELECTED</div>
           <div className="pit-b">WORKS</div>
         </div>
+
         <p className="pi-note">
           Academic and professional projects spanning mobile apps, web platforms, and design systems.
         </p>
       </div>
 
-      {projects.map((p) => (
+      {projects.slice(0, visibleProjects).map((p) => (
         <div key={p.idx} className="proj-row rv">
-          <div className="proj-idx"><span>{p.idx}</span></div>
+          <div className="proj-idx">
+            <span>{p.idx}</span>
+          </div>
+
           <div className="proj-body">
             <h3 className="proj-title">{p.title}</h3>
             <p className="proj-desc">{p.desc}</p>
+
             <div className="proj-tags">
               {p.tags.map((t) => (
                 <span key={t} className="pt">{t}</span>
               ))}
             </div>
           </div>
+
           <div className="proj-meta">
             <div className="pm-ico">{p.icon}</div>
             <div className="pm-type">{p.type}</div>
           </div>
         </div>
       ))}
+
+      {visibleProjects < projects.length && (
+        <div className="view-more-wrap">
+          <button className="view-more-btn" onClick={loadMore}>
+            View More Projects
+          </button>
+        </div>
+      )}
     </section>
   );
 }

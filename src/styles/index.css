@@ -2,3 +2,39 @@
 @import './tailwind.css';
 @import './theme.css';
 @import './portfolio.css';
+
+
+
+.view-more-wrap{
+  display:flex;
+  justify-content:center;
+  margin-top:60px;
+}
+
+.view-more-btn{
+  padding:14px 28px;
+  border-radius:40px;
+  border:1px solid #ddd;
+  font-size:14px;
+  cursor:pointer;
+  transition:all .3s ease;
+  margin-bottom: 60px;
+}
+
+.view-more-btn:hover{
+  background:black;
+  color:#c8ff00;
+}
+
+.proj-row{
+opacity:0;
+transform:translateY(20px);
+animation:fadeUp .6s ease forwards;
+}
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}

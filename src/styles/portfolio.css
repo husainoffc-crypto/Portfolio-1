@@ -28,6 +28,8 @@ body::before {
   opacity: 0.035;
   pointer-events: none;
   z-index: 9995;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 /* ── CURSOR ── */
@@ -36,6 +38,8 @@ body::before {
   z-index: 9999;
   pointer-events: none;
   mix-blend-mode: difference;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .c-dot {
@@ -43,24 +47,33 @@ body::before {
   height: 12px;
   background: var(--fg);
   border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: 0.15s;
+  margin-left: -6px;
+  margin-top: -6px;
+  transition: width 0.15s, height 0.15s, background 0.15s;
 }
 
 #PORT-RING {
   position: fixed;
+  top: 0;
+  left: 0;
   z-index: 9998;
   pointer-events: none;
   width: 48px;
   height: 48px;
+  margin-left: -24px;
+  margin-top: -24px;
   border: 1px solid rgba(200, 255, 0, 0.5);
   border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: transform 0.08s;
+  will-change: transform;
+  backface-visibility: hidden;
+  transition: width 0.2s, height 0.2s, margin 0.2s, border-color 0.2s;
 }
 
 body.cursor-H #PORT-RING {
-  transform: translate(-50%, -50%) scale(2.5);
+  width: 120px;
+  height: 120px;
+  margin-left: -60px;
+  margin-top: -60px;
   border-color: var(--acc);
 }
 
@@ -337,7 +350,7 @@ body.cursor-H #PORT-RING {
   margin-top: 8px;
 }
 
-.h-right-bottom {}
+/* h-right-bottom: no styles needed */
 
 .hr-tag {
   font-size: 8px;
@@ -417,6 +430,8 @@ body.cursor-H #PORT-RING {
   display: flex;
   animation: tk 18s linear infinite;
   white-space: nowrap;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .tk-i {
@@ -903,6 +918,9 @@ body.cursor-H #PORT-RING {
   cursor: none;
   position: relative;
   overflow: hidden;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
 }
 
 .proj-row::before {
@@ -1205,11 +1223,13 @@ body.cursor-H #PORT-RING {
 /* ── REVEAL ── */
 .rv {
   opacity: 0;
-  transform: translateY(36px);
+  transform: translate3d(0, 36px, 0);
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
 }
 
-.rv.in { opacity: 1; transform: none; }
+.rv.in { opacity: 1; transform: translate3d(0, 0, 0); }
 
 .d1 { transition-delay: 0.1s; }
 .d2 { transition-delay: 0.2s; }

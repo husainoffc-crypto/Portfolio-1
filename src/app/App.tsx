@@ -29,12 +29,19 @@ export default function App() {
 
   /* Parallax on the hero name + rotated label */
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      const y = window.scrollY;
-      const name = document.querySelector('.h-name') as HTMLElement | null;
-      if (name) name.style.transform = `translateY(${y * 0.08}px)`;
-      const rot = document.querySelector('.h-rotated') as HTMLElement | null;
-      if (rot) rot.style.transform = `translateY(calc(-50% + ${y * 0.1}px)) rotate(-90deg)`;
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          const name = document.querySelector('.h-name') as HTMLElement | null;
+          if (name) name.style.transform = `translate3d(0, ${y * 0.08}px, 0)`;
+          const rot = document.querySelector('.h-rotated') as HTMLElement | null;
+          if (rot) rot.style.transform = `translate3d(0, calc(-50% + ${y * 0.1}px), 0) rotate(-90deg)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);

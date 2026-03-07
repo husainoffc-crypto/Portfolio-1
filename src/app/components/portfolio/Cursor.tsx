@@ -11,22 +11,20 @@ export function Cursor() {
       cx = e.clientX;
       cy = e.clientY;
       if (cur) {
-        cur.style.left = cx + 'px';
-        cur.style.top = cy + 'px';
+        cur.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
       }
     };
 
     const lerp = () => {
-      rx += (cx - rx) * 0.1;
-      ry += (cy - ry) * 0.1;
+      rx += (cx - rx) * 0.15;
+      ry += (cy - ry) * 0.15;
       if (ring) {
-        ring.style.left = rx + 'px';
-        ring.style.top = ry + 'px';
+        ring.style.transform = `translate3d(${rx}px, ${ry}px, 0)`;
       }
       animId = requestAnimationFrame(lerp);
     };
 
-    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mousemove', onMouseMove, { passive: true });
     animId = requestAnimationFrame(lerp);
 
     const handleOver = (e: MouseEvent) => {
@@ -55,7 +53,7 @@ export function Cursor() {
 
   return (
     <>
-      <div id="PORT-CUR" style={{ position: 'fixed' }}>
+      <div id="PORT-CUR">
         <div className="c-dot" />
       </div>
       <div id="PORT-RING" />

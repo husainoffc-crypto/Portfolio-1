@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const projects = [
   {
@@ -133,12 +133,51 @@ const projects = [
 
 export function Projects() {
   const [visibleProjects, setVisibleProjects] = useState(4);
+  const prevVisible = useRef(4);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const rows = sectionRef.current?.querySelectorAll('.proj-row');
+    if (!rows) return;
+
+    rows.forEach((row, i) => {
+      const el = row as HTMLElement;
+      if (i >= prevVisible.current && i < visibleProjects) {
+        // Newly revealed rows — animate in with stagger
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(40px)';
+        el.style.transition = 'none';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const delay = (i - prevVisible.current) * 0.1;
+            el.style.transition = `opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`;
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          });
+        });
+      }
+    });
+
+    prevVisible.current = visibleProjects;
+  }, [visibleProjects]);
 
   const loadMore = () => {
-    setVisibleProjects((prev) => Math.min(prev + 2, projects.length));
+    setVisibleProjects(projects.length);
   };
+
+  const showLess = () => {
+    const section = sectionRef.current;
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    setTimeout(() => {
+      setVisibleProjects(4);
+      prevVisible.current = 4;
+    }, 400);
+  };
+
   return (
-    <section id="projects">
+    <section id="projects" ref={sectionRef}>
       <div className="proj-intro rv">
         <div className="pi-title">
           <div className="pit-a">SELECTED</div>
@@ -150,8 +189,12 @@ export function Projects() {
         </p>
       </div>
 
-      {projects.slice(0, visibleProjects).map((p) => (
-        <div key={p.idx} className="proj-row rv">
+      {projects.slice(0, visibleProjects).map((p, i) => (
+        <div
+          key={p.idx}
+          className="proj-row rv"
+          style={i < 4 ? undefined : { opacity: 0, transform: 'translateY(40px)' }}
+        >
           <div className="proj-idx">
             <span>{p.idx}</span>
           </div>
@@ -174,13 +217,17 @@ export function Projects() {
         </div>
       ))}
 
-      {visibleProjects < projects.length && (
-        <div className="view-more-wrap">
+      <div className="view-more-wrap">
+        {visibleProjects < projects.length ? (
           <button className="view-more-btn" onClick={loadMore}>
             View More Projects
           </button>
-        </div>
-      )}
+        ) : (
+          <button className="view-more-btn" onClick={showLess}>
+            Show Less
+          </button>
+        )}
+      </div>
     </section>
   );
 }

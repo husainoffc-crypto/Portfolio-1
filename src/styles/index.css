@@ -53,3 +53,15 @@
     transform:translate3d(0, 0, 0) scale(1);
   }
 }
+
+/* Mobile Spacing for View More Button */
+@media (max-width: 900px) {
+  .view-more-wrap {
+    margin-top: 32px;
+  }
+  .view-more-btn {
+    padding: 12px 24px;
+    font-size: 11px;
+    margin-bottom: 40px;
+  }
+}

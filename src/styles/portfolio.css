@@ -1240,22 +1240,85 @@ body.cursor-H #PORT-RING {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .port-nav { padding: 18px 20px; }
+  /* Nav */
+  .port-nav { padding: 16px 20px; }
   .nav-links { display: none; }
+  .logo { font-size: 13px; }
+  .nav-btn { padding: 8px 16px; font-size: 8px; }
+
+  /* Hero */
   #hero { grid-template-columns: 1fr; min-height: auto; }
-  .h-left { padding: 110px 20px 40px; border-right: none; border-bottom: 1px solid var(--dim); }
+  .h-left { padding: 100px 20px 40px; border-right: none; border-bottom: 1px solid var(--dim); }
+  .h-rotated { display: none; /* Hide rotated text on mobile to save space */ }
+  .h-name { font-size: clamp(48px, 12vw, 80px); letter-spacing: -2px; }
+  .h-typewriter { font-size: 14px; min-height: auto; margin-bottom: 24px; }
+  .h-eyebrow { margin-bottom: 20px; }
+  .chip { padding: 6px 12px; font-size: 8px; }
+
   .h-right { padding: 40px 20px; }
+  .h-scroll-hint { position: relative; bottom: auto; transform: none; left: auto; margin-top: 60px; }
+  .hng { padding: 24px 20px; }
+  .hng-n { font-size: 36px; }
+
+  /* Section Layouts */
   #about, #contact, .exp-intro, .sk-hero { grid-template-columns: 1fr; }
   .ab-l, .ab-r, .exp-intro-l, .skh-l, .ct-l, .ct-r {
     padding: 60px 20px;
     border-right: none;
     border-bottom: 1px solid var(--dim);
   }
+
+  /* Typography Scaling for Mobile */
+  .ab-heading { font-size: clamp(36px, 10vw, 56px); margin-bottom: 32px; }
+  .sk-title { font-size: clamp(56px, 15vw, 100px); letter-spacing: -2px; }
+  .sk-title-real { font-size: clamp(32px, 8vw, 48px); margin-top: -10px; }
+  .exp-big { font-size: clamp(48px, 12vw, 80px); letter-spacing: -2px; }
+  .exp-r-head { font-size: clamp(24px, 6vw, 36px); margin-bottom: 24px; }
+  .pi-title { font-size: clamp(40px, 10vw, 64px); letter-spacing: -2px; }
+  .ct-head { font-size: clamp(40px, 10vw, 64px); letter-spacing: -2px; }
+
+  /* About */
+  .ab-text { margin-bottom: 32px; }
+  .ab-card { padding: 28px 20px; }
+  .edu { padding: 24px 20px; }
+  .edu-yr { font-size: 40px; }
+
+  /* Skills */
+  .skh-r { padding: 40px 20px; }
+  .sk-block { width: 240px; padding: 36px 24px; }
+  .sk-drag-hint { padding: 16px 20px; }
+
+  /* Experience */
   .exp-item { grid-template-columns: 1fr; }
   .exp-l { border-right: none; border-bottom: 1px solid var(--dim); padding: 32px 20px; }
   .exp-r { padding: 32px 20px; }
-  .proj-intro, .proj-body { padding: 40px 20px; }
-  .proj-row { grid-template-columns: 60px 1fr; }
-  .proj-meta { display: none; }
-  .port-footer { flex-direction: column; gap: 8px; padding: 20px; text-align: center; }
+  .ex-co { font-size: 16px; margin-top: 8px; }
+  .erl { flex-direction: column; gap: 4px; padding: 12px 0; }
+  .erl::before { display: none; }
+
+  /* Projects */
+  .proj-intro { padding: 60px 20px 40px; gap: 16px; }
+  .proj-body { padding: 32px 20px; border-right: none; }
+  .proj-row { grid-template-columns: auto 1fr; align-items: start; }
+  .proj-idx { padding: 32px 16px; border-bottom: none; border-right: 1px solid var(--dim); min-height: 100%; }
+  .proj-title { font-size: clamp(20px, 6vw, 28px); margin-bottom: 12px; }
+  .proj-desc { margin-bottom: 20px; font-size: 10px; line-height: 1.8; }
+  .proj-meta { display: none; /* Hide redundant meta on mobile */ }
+  .pt { padding: 4px 8px; font-size: 7px; }
+
+  /* Contact & Footer */
+  .clink { padding: 20px 0; }
+  .cl-n { font-size: clamp(20px, 5vw, 28px); }
+  .ctr-q { font-size: 16px; margin-bottom: 32px; }
+  .ctm-pills { gap: 6px; }
+  .ctm-p, .hob-p { padding: 6px 12px; font-size: 7px; }
+  .dl-resume-btn { margin-top: 40px; width: 100%; justify-content: center; }
+  
+  .port-footer { 
+    flex-direction: column; 
+    gap: 16px; 
+    padding: 32px 20px; 
+    text-align: center; 
+    line-height: 1.8;
+  }
 }

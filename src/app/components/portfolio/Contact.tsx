@@ -1,3 +1,5 @@
+import resumePdf from '../../../assets/UI%20UX%20Designer (1).pdf';
+
 const links = [
   { label: 'Email', value: 'husainbhatiya647@gmail.com', href: 'mailto:husainbhatiya647@gmail.com' },
   { label: 'Phone', value: '+91 9004 01 6055', href: 'tel:+919004016055' },
@@ -71,6 +73,9 @@ export function Contact() {
           Available for full-time, freelance, or contract roles.<br />
           Response within 24 hours guaranteed.
         </div>
+        <a href={resumePdf} download="Husain_Bhatiya_Resume.pdf" className="dl-resume-btn">
+          <span className="dl-resume-text"><span className="dl-arrow">↓</span> Download Resume</span>
+        </a>
       </div>
     </section>
   );

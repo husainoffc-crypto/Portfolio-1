@@ -1140,6 +1140,53 @@ body.cursor-H #PORT-RING {
   line-height: 2.2;
 }
 
+.dl-resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border: 1px solid var(--acc);
+  color: var(--acc);
+  background: none;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s;
+}
+
+.dl-resume-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--acc);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dl-resume-btn:hover { color: var(--bg); }
+.dl-resume-btn:hover::before { transform: scaleX(1); }
+
+.dl-resume-btn .dl-resume-text {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dl-resume-btn .dl-arrow {
+  font-size: 14px;
+  transition: transform 0.3s;
+}
+
+.dl-resume-btn:hover .dl-arrow { transform: translateY(2px); }
+
 /* ── FOOTER ── */
 .port-footer {
   border-top: 1px solid var(--dim);

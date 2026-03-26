@@ -8,6 +8,7 @@ const projects = [
     tags: ['Figma', 'Mobile App', 'UX Design', 'Prototyping'],
     icon: '🍔',
     type: 'Mobile Design',
+    url: 'https://www.figma.com/proto/Z4pnwfPZnlDaJBC6tO8skx/Runtime-SEO?node-id=1-596&viewport=-468%2C433%2C0.48&t=wObmbS7vQs1mxUGu-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1'
   },
   {
     idx: '02',
@@ -190,7 +191,9 @@ export function Projects() {
       </div>
 
       {projects.slice(0, visibleProjects).map((p, i) => (
-        <div
+        <a href={p.url || '/'}
+          target="_blank"
+          rel="noopener noreferrer"
           key={p.idx}
           className="proj-row rv"
           style={i < 4 ? undefined : { opacity: 0, transform: 'translateY(40px)' }}
@@ -214,7 +217,7 @@ export function Projects() {
             <div className="pm-ico">{p.icon}</div>
             <div className="pm-type">{p.type}</div>
           </div>
-        </div>
+        </a>
       ))}
 
       <div className="view-more-wrap">
